@@ -1,3 +1,4 @@
+import os
 from datetime import date
 from flask import Flask, abort, render_template, redirect, url_for, flash, request
 from flask_bootstrap import Bootstrap5
@@ -59,6 +60,7 @@ class Base(DeclarativeBase):
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DB_URI", "sqlite:///posts.db")
 db = SQLAlchemy(model_class=Base)
 db.init_app(app)
+
 
 
 # CONFIGURE TABLES
@@ -299,4 +301,4 @@ def contact():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5001)
+    app.run(debug=False, port=5001)
